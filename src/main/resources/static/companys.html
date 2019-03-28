@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/home.css">
+		<style type="text/css">
+			body {
+				font-family: "microsoft yahei";
+				font-size: 14px;
+			}
+			
+			.aui-content-up {
+				height: auto;
+			}
+			
+			img {
+				margin: 10px;
+				width: 200px;
+				height: 120px;
+				display: inline-block;
+				position: relative;
+				float: left;
+			}
+			
+			input {
+				border: 1px solid #b3cef9;
+				border-radius: 4px;
+			}
+			
+			.rct-box {
+				display: inline-block;
+				margin: 8px;
+			}
+			
+			.rct-box p {
+				margin: 5px;
+				width: 300px;
+				display: inline-block;
+			}
+			
+			.rec-box {
+				margin: 10px;
+				height: 150px;
+				border: 1.5px solid #d3cef9;
+				border-radius: 4px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="aui-content-up" id="main">
+			<!--<div class="rec-box">-->
+				<!--<img src="" />-->
+				<!--<div class="rct-box">-->
+					<!--<p>-->
+						<!--name-->
+						<!--<br />-->
+						<!--typename-->
+						<!--<br>-->
+						<!--cintroduce-->
+					<!--</p>-->
+					<!---->
+				<!--</div>-->
+				<!--<div class="crt-score" style="float: right; margin: 10px; ">-->
+					<!--<button class="aui-btn aui-btn-account">点击查看详情</button>-->
+				<!--</div>-->
+			<!--</div>-->
+			</div>
+	</body>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/tojson.js"></script>
+	<script>
+		$(function () {
+//			var s=location.href;
+//			index=s.indexOf("?");
+//			var a=s.substring(index+1,s.length);
+//			var data=a.split("=")[1]
+//			console.log(data);
+			var COMPANY_URL="http://localhost:8082/jobFind/companys";
+			$.ajax({
+				url:COMPANY_URL,
+				type:"post",
+				dataType:"json",
+				statusCode:{
+					200:function (data) {
+						console.log(data);
+						$(data).each(function (i) {
+							var str="<div class='rec-box'> <img src='"+data[i].cphotopath+"' /> "
+									+"<div class='rct-box'> <p>匹配分值: "+data[i].others+"<br>企业名称: "+data[i].cname+" <br/>" +
+									"企业类型: " +data[i].typename+"<br>企业简介: "+data[i].cintroduce +"</p> </div>"
+									+ "<div class='crt-score' style='float: right; margin: 10px; '> " +
+									"<button class='aui-btn aui-btn-account'><a href='lookcompany.html?cid="+data[i].cid+"'>点击查看详情</a></button> </div> </div>"
+						   $("#main").append(str);
+						})
+					},
+					409:function (data) {
+						alert("请先完成意向企业筛选！");
+					}
+				}
+			})
+		})
+	</script>
+</html>

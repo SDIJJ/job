@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/home.css">
+	</head>
+
+	<body>
+		<section class="aui-content">
+			<div style="height:20px;"></div>
+			<div class="aui-content-up">
+				<!--上传文件用ajax不好使-->
+				<form enctype="multipart/form-data" id="imgform"  method="post">
+					<input type="hidden" name="rid" value="">
+					<div class="aui-content-up-form">
+						<h2>个人头像</h2>
+					</div>
+					<div class="aui-content-up-form">
+						<img src="img/default.jpg" alt="" width="180px" height="180px" id="pic">
+					</div>
+					<div class="aui-form-group clear">
+						<div class="aui-form-input">
+							<input class="aui-btn aui-btn-account" type="file"  name="imgFile" >
+							<input class="aui-btn aui-btn-account" type="button" value="上传头像" id="imgbtn"/>
+						</div>
+					</div>
+				</form>
+				<form id="resumeform">
+					<input type="hidden" name="role" value="0">
+					<input type="hidden" name="rid" value="">
+					<div class="aui-content-up-form">
+						<h2>基本信息</h2>
+					</div>
+					<div class="aui-form-group clear">
+						<label class="aui-label-control">
+							职位 <em>*</em>
+						</label>
+						<div class="aui-form-input">
+							<input type="text" class="aui-form-control-two" name="position"   placeholder="请输入求职职位名称">
+						</div>
+					</div>
+					<div class="aui-form-group clear">
+						<label class="aui-label-control">
+					姓名 <em>*</em>
+				</label>
+						<div class="aui-form-input">
+							<input type="text" class="aui-form-control-two" name="name"  id="1" placeholder="请输入姓名">
+							<span class="tips" >长度1~6个字符</span>
+						</div>
+					</div>
+				    <div class="aui-form-group clear">
+						<label class="aui-label-control">
+							年龄
+						</label>
+						<div class="aui-form-input">
+							<input type="text" class="aui-form-control-two" name="age"  >
+						</div>
+					</div>
+					<div class="aui-form-group clear">
+						<label class="aui-label-control">
+					性别 <em>*</em>
+				</label>
+						<div class="aui-form-input">
+							男<input type="radio" name="sex" class="sex" value="男">女<input type="radio" name="sex" class="sex" value="女">
+						</div>
+					</div>
+					<div class="aui-form-group clear">
+						<label class="aui-label-control">
+							邮箱 <em>*</em>
+						</label>
+						<div class="aui-form-input">
+							<input type="text" class="aui-form-control-two" name="email"  placeholder="example@.com">
+							<span class="tips" id="divname">注意邮箱格式</span>
+						</div>
+					</div>
+						<div class="aui-form-group clear">
+							<label class="aui-label-control">
+					          居住地
+				            </label>
+							<div class="aui-form-input">
+								<input type="text" class="aui-form-control-two" name="address"  placeholder="省/市/区/街道">
+							</div>
+						</div>
+						<div class="aui-form-group clear">
+							<label class="aui-label-control">
+								手机号码 <em>*</em>
+							</label>
+							<div class="aui-form-input">
+								<input type="text" class="aui-form-control-two" name="phone" placeholder="请输入11位的手机号码" />
+								<span class="tips" id="phone">必须是11位的数字</span>
+							</div>
+						</div>
+						<div class="aui-form-group clear">
+							<label class="aui-label-control">
+					         户籍
+				            </label>
+							<div class="aui-form-input">
+								<input type="text" class="aui-form-control-two" name="huji"  placeholder="省/市/区/街道">
+							</div>
+						</div>
+
+						<div class="aui-content-up-form">
+							<h2>学业信息</h2>
+						</div>
+								<div class="aui-form-group clear">
+						<label class="aui-label-control">
+					学校 <em>*</em>
+				</label>
+						<div class="aui-form-input">
+							<input type="text" class="aui-form-control-two" name="school" placeholder="请输入学校名称">
+						</div>
+					</div>
+					<div class="aui-form-group clear">
+						<label class="aui-label-control">
+					专业 <em>*</em>
+				</label>
+						<div class="aui-form-input">
+							<input type="text" class="aui-form-control-two" name="major"  placeholder="计算机科学与技术 ">
+						</div>
+					</div>
+							<div class="aui-form-group clear">
+							<label class="aui-label-control">
+					专业排名
+				</label>
+							<div class="aui-form-input">
+								<select class="aui-form-control-two majorpm" name="majorpm">
+					<option value="10">前10%</option>
+					<option value="20">前20%</option>
+					<option value="30">前30%</option>
+					<option value="40">前40%</option>
+					<option value="50">其他</option>
+					</select>
+							</div>
+						</div>
+							<div class="aui-form-group clear">
+							<label class="aui-label-control">
+					学历  &nbsp;
+				</label>
+							<div class="aui-form-input">
+								<select class="aui-form-control-two xueli" name="xueli">
+					<option value="初中">初中</option>
+					<option value="高中">高中</option>
+					<option value="专科">专科</option>
+					<option value="本科">本科</option>
+					<option value="硕士">硕士</option>
+					<option value="博士及以上">博士及以上</option>
+					</select>
+							</div>
+						</div>
+							<div class="aui-content-up-form">
+							<h2>个人技能</h2>
+						</div>
+						
+						<div class="aui-form-group clear">
+							<label class="aui-label-control">
+					         最高技能证书
+				            </label>
+							<div class="aui-form-input">
+								<input type="text" class="aui-form-control-two" name="certificate" >
+							</div>
+						</div>
+
+					<div class="aui-form-group clear">
+						<label class="aui-label-control">
+							最高技能证书级别
+						</label>
+						<div class="aui-form-input">
+							<input type="text" class="aui-form-control-two" name="level">
+						</div>
+					</div>
+
+					<div class="aui-form-group clear">
+						<label class="aui-label-control">
+					工作经历 <em>*</em>
+				</label>
+						<div class="aui-form-input">
+							无<input type="radio" name="workexp"  value="无"><br>
+							一年<input type="radio" name="workexp"  value="一年"><br>
+							两年 <input type="radio" name="workexp" class="" value="两年"><br>
+							三年 <input type="radio" name="workexp" class="" value="三年"><br>
+							三年以上 <input type="radio" name="workexp" class="" value="三年以上"><br>
+						</div>
+					</div>
+
+					<!--<div class="aui-form-group clear">-->
+						<!--<label class="aui-label-control">-->
+							<!--上传附件简历-->
+						<!--</label>-->
+						<!--<div class="aui-form-input">-->
+							<!--<input type="file" class="aui-form-control-two" name="resumefile"  required>-->
+						<!--</div>-->
+					<!--</div>-->
+					<div class="aui-form-group clear">
+						<button class="aui-btn aui-btn-account" id="resumebtn">完善并提交</button>
+						<button class="aui-btn aui-btn-account" >取消保存</button>
+					</div>
+				</form>
+				</div>
+		</section>
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<script src="js/tojson.js"></script>
+		<script  src="js/jquery.cookie-1.4.1.min.js"></script>
+		<script>
+			$(function () {
+				var FORMS_URL="http://localhost:8082/resume/getResume";
+				$.ajax({
+					url:FORMS_URL,
+					type:"post",
+					dataType:"json",
+					statusCode:{
+						200:function (data) {
+							console.log("data:"+data);
+							if(data!=null){
+								$("input[name='rid']").val(data.rid);
+								$('#pic').attr("src",data.ppath);
+								$("input[name='imgFile']").val(data.imgFile);
+								$("input[name='position']").val(data.position);
+								$("input[name='name']").val(data.name);
+								$("input[name='age']").val(data.age);
+								$("input[name='sex'][value='"+data.sex+"']").prop("checked","checked");
+								$("input[name='email']").val(data.email);
+								$("input[name='address']").val(data.address);
+								$("input[name='phone']").val(data.phone);
+								$("input[name='huji']").val(data.huji);
+								$("input[name='school']").val(data.school);
+								$("input[name='major']").val(data.major);
+								$(".majorpm").find("option[value='"+data.majorpm+"']").attr("selected",true);
+								$(".xueli").find("option[value='"+data.xueli+"']").attr("selected",true);
+								$("input[name='certificate']").val(data.certificate);
+								$("input[name='level']").val(data.level);
+								$("input[name='workexp'][value='"+data.workexp+"']").prop("checked","checked");
+							}
+						}
+					}
+
+				})
+
+
+
+				var IMG_URL="http://localhost:8082/resume/uploadImg";
+				$("#imgbtn").click(function () {
+//					var json=JSON.stringify($("#imgform").serializeObject());
+					var formData=new FormData($("#imgform")[0]);
+					alert(formData);
+					console.log(formData);
+//					console.log("json="+json);
+					$.ajax({
+						url: IMG_URL,
+						data: formData,
+						type: "post",
+//						contentType:"application/json;charset=utf-8",
+						async: false,
+						cache: false,
+						contentType: false,
+						processData: false,
+						statusCode:{
+							200:function (data) {
+//								console.log(data);
+								console.log(data);
+								$("input[name='rid']").val(data.rid);
+								$('#pic').attr("src",data.ppath);
+								alert("头像上传成功");
+								window.location="resume.html";
+							},
+							409:function (data) {
+								alert("上传错误！");
+							}
+						}
+					})
+				})
+
+				var RESUME_URL="http://localhost:8082/resume/update";
+				$("#resumebtn").click(function () {
+					var json=JSON.stringify($("#resumeform").serializeObject());
+					console.log("json="+json);
+					$.ajax({
+						url: RESUME_URL,
+						data: json,
+						type: "post",
+						contentType:"application/json;charset=utf-8",
+						dataType: "json",
+						statusCode:{
+							200:function (data) {
+								alert(data.username+"信息完善成功");
+								window.location="resume.html";
+							},
+							409:function (data) {
+								alert("上传错误！");
+							}
+						}
+					})
+				})
+			})
+		</script>
+	</body>
+
+</html>

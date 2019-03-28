@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+
+
+    <!-- CSS -->
+    <script type="application/javascript" src="layui/layui.all.js"></script>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/form-elements.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicon and touch icons -->
+    <link rel="icon" href="img/TIM7.png"
+          type="image/png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+
+<body>
+
+<!-- Top content -->
+<div class="top-content">
+
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1><strong>智能</strong>招聘</h1>
+                    <div class="description">
+                        <p>
+                            将您的企业需求告诉我们，我们帮您挑选出<a href="#"><strong>最合适</strong></a>的人才!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>注册<a style="font-size: 16px; margin-left:5%; color: #1E9FFF;" href="login.html">已有账号?立即登录</a>
+                            </h3>
+                            <p>请输入您的注册账户信息</p>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-key"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form class="login-form" id="registerform">
+                            <div class="form-group">
+                                <label class="sr-only" for="username">Username</label>
+                                <input type="text" name="username" id="username" placeholder="账号..."
+                                       class="form-username form-control">
+                                <span id="user_warning_info" style="font-size: 15px ;color: red;"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="password">Password</label>
+                                <input type="password" name="password" id="password" placeholder="密码..."
+                                       class="form-password form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="repassword">Password</label>
+                                <input type="password" name="repassword" id="repassword" placeholder="确认密码..."
+                                       class="form-password form-control">
+                                <span id="repasswd_warning_info" style="font-size: 15px ;color: red;"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="mail">Password</label>
+                                <input type="text" name="mail" id="mail" placeholder="电子邮箱..."
+                                       class="form-password form-control">
+                                <span id="mail_warning_info" style="font-size: 15px ;color: red;"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="captcha">Password</label>
+                                <div>
+                                    <input style="display: inline-block;width: 50%" maxlength="6" type="password"
+                                           placeholder="验证码..." class="form-password form-control" name="captcha"
+                                           id="captcha">
+                                    <input style="display: inline-block;width: 48%;height: 40px;background: #5FB878;color: #FFFFFF"
+                                           type="button" class="btn" value="发送验证码" id="send-captcha"/>
+                                    <span id="captcha_warning_info" style="font-size: 15px ;color: red;"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="role">Role</label>
+                                <select name="role" id="role" class="form-control">
+                                    <option value="求职者">求职者</option>
+                                    <option value="企业">企业</option>
+                                </select>
+                            </div>
+                            <!--<button id="regbtn"  style="background-color: #1E9FFF;">立即注册!</button>-->
+                            <input type="button" value="立即注册!" style="background-color: #1E9FFF;" id="regbtn" class="layui-btn layui-btn-lg"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Javascript -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.backstretch.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+<script src="js/tojson.js"></script>
+
+
+<!--[if lt IE 10]>
+<script src="assets/js/placeholder.js"></script>
+<![endif]-->
+<script type="application/javascript">
+    var change_time;
+    $("#send-captcha").attr("disabled", "disabled");
+    $(function () {
+        var t;
+        change_time = function () {
+            $("#send-captcha").val(t + "秒后可重新发送");
+            t = t - 1;
+            if (t == -1) {
+                $("#send-captcha").removeAttr("disabled");
+                $("#send-captcha").val("发送验证码");
+                return;
+            }
+            setTimeout("change_time()", 1000)
+        };
+        $("#send-captcha").click(function () {
+            t = 60;
+            $("#send-captcha").attr("disabled", "disabled");
+            change_time();
+        });
+        var REGISTER_URL = "http://localhost:8082/user/register";
+        $("#regbtn").click( function () {
+           // 检测用户名不能为空
+            if ($("#username").val() == "") {
+                alert("用户名不能为空");
+                return;
+            }
+            //检测密码不能为空
+            if ($("#password").val() == "") {
+                alert("密码不能为空");
+                return;
+            }
+            //检测确认密码不能为空
+            if ($("#repassword").val() == "") {
+                alert("确认密码不能为空");
+                return;
+            }
+            //检测邮箱不能为空
+            if ($("#mail").val() == "") {
+                alert("邮箱不能为空");
+                return;
+            }
+            //检测验证码是否正确
+            if ($("#captcha").val() != code) {
+              alert("验证码不正确！");
+                return;
+            }
+            var json = JSON.stringify($("#registerform").serializeObject());
+            console.log(json);
+            $.ajax({
+                url: REGISTER_URL,
+                data: json,
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                statusCode: {
+
+                    200: function (data) {
+                        alert("注册成功，前去登陆吧！")
+                        window.location = "login.html";
+                    },
+                    409: function (data) {
+                        alert("注册失败！")
+                    }
+                }
+            })
+        });
+        //用户名重复验证
+        var VERIFY_URL = "http://localhost:8082/user/verify/";
+        $("#username").blur(function () {
+            var value = $("#username").val();
+            console.log(value);
+            $.ajax({
+                url: VERIFY_URL + value,
+                type: "GET",
+                statusCode: {
+                    409: function () {
+                        $("#user_warning_info").html("该用户已存在");
+                    },
+                    200: function () {
+                        $("#user_warning_info").html("");
+                    }
+                }
+
+            });
+        });
+        //邮箱重复验证
+        var flag = 0;      //验证完邮箱才可以发验证码
+        var code = "111111";     //存储验证码
+        var VERIFY_MAIL = "http://localhost:8082/user/verifyMail/";
+        $("#mail").blur(function () {
+            var value = $("#mail").val()
+            //检测邮箱格式是否正确
+            var reg = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+            if (!reg.test($("#mail").val())) {
+                $("#mail_warning_info").html("邮箱格式不正确");
+                $("#send-captcha").attr("disabled", "disabled");
+                return;
+            }
+            $("#send-captcha").removeAttr("disabled");
+            $.ajax({
+                url: VERIFY_MAIL + value,
+                type: "GET",
+                statusCode: {
+                    409: function () {
+                        $("#mail_warning_info").html("该邮箱已存在");
+                    },
+                    200: function () {
+                        flag = 1;
+
+                        $("#mail_warning_info").html("");
+                    }
+                }
+            });
+        });
+        //密码不一致检测
+        $("#repassword").blur(function () {
+
+            var pwd = $("#password").val()
+            var repwd = $("#repassword").val()
+
+            if (pwd == repwd) {
+                $("#repasswd_warning_info").html("")
+            } else {
+                $("#repasswd_warning_info").html("两次密码不一致")
+            }
+        });
+        //邮箱发送验证码
+        $("#send-captcha").click(function () {
+            if (flag == 1) {
+                var MAIL_URL = "http://localhost:8082/user/sendCode/";
+                var value = $("#mail").val();
+                $.ajax({
+                    url: MAIL_URL + value,
+                    type: "GET",
+                    statusCode: {
+
+                        200: function (data) {
+                            code = data.toString();
+                        }
+                    }
+                });
+            } else {
+                $("#captcha_warning_info").html("请填写正确邮箱");
+            }
+        })
+//        $("#mail").blur(function () {
+//            var reg = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+//            if (!reg.test($("#mail").val())) {
+//                $("#send-captcha").attr("disabled", "disabled");
+//            }else {
+//                $("#send-captcha").removeAttr("disabled");
+//            }
+//        });
+    })
+</script>
+</body>
+
+</html>

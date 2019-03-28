@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/home.css">
+		<style type="text/css">
+			body {
+				font-size: 15px;
+				font-family: "microsoft yahei";
+			}
+			
+			.aui-content-up {
+				height: 100%;
+			}
+			
+			input{
+				width: 35px;
+				height: auto;
+				border: 1px solid #b3cef9;
+    			border-radius: 4px
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="aui-content-up">
+			<form id="peopleIntensionForm" action="http://localhost:8082/peopleFind/updatePeopleFind" method="post">
+					<div class="aui-content-up-form">
+					<h2>学历</h2>
+				</div>
+					<p>&nbsp;</p>
+					<p>请为每一项打出你的满意程度（0-10）</p>
+				<div style="float: right;display: inline-block">打出你的重视度（0-10）</div>
+				<br/>
+				<div style="float: right;display: inline-block">
+					<input type="text" name="xueliweight"/>
+				</div>
+				<div style="align-self: auto; display: inline-block">
+
+					<input type="hidden" name="xueli" value="初中"  /><input type="text" name="xueliscore" value="2">初中<br>
+					<input type="hidden" name="xueli" value="高中" /><input type="text" name="xueliscore" value="2">高中<br>
+					<input type="hidden" name="xueli" value="专科" /><input type="text" name="xueliscore" value="2">专科<br>
+					<input type="hidden" name="xueli" value="本科" /><input type="text" name="xueliscore" value="2">本科<br/>
+					<input type="hidden" name="xueli" value="硕士" /><input type="text" name="xueliscore" value="2">硕士<br/>
+					<input type="hidden" name="xueli" value="博士及以上" /><input type="text" name="xueliscore" value="2">博士及以上<br/>
+
+				</div> <br/>
+
+				<p>&nbsp;</p>
+					<div class="aui-content-up-form">
+					<h2>工作经历</h2>
+				</div>
+					<p>&nbsp;</p>
+					<div style="float: right;display: inline-block">打出你的重视度（0-10）</div>
+					<br />
+					<div style="float: right;display: inline-block"><input type="text" name="workexpweight" /></div>
+				<div style="align-self: auto;  display: inline-block">
+					<input type="hidden" name="workexp"  value="无"><input type="text" name="workexpscore" value="5">无<br>
+					<input type="hidden" name="workexp"  value="一年"><input type="text" name="workexpscore" value="5">一年<br>
+					<input type="hidden" name="workexp"  value="两年"><input type="text" name="workexpscore" value="5">两年<br>
+					<input type="hidden" name="workexp"  value="三年"><input type="text" name="workexpscore" value="5">三年<br>
+					<input type="hidden" name="workexp"  value="三年以上"><input type="text" name="workexpscore" value="5">三年以上<br>
+				</div>
+				<p></p>
+				<button class="aui-btn aui-btn-account"  id="pbtn">保存并提交</button>
+			</form>
+		</div>
+	</body>
+	<script SRC="js/jquery-3.1.1.min.js"></script>
+	<script src="js/tojson.js"></script>
+	<script  src="js/jquery.cookie-1.4.1.min.js"></script>
+	<script>
+		$(function () {
+			$("#pbtn").on('click',function () {
+				$("#peopleIntensionForm").submit();
+			})
+			var P_URL="http://localhost:8082/peopleFind/getPeopleIntension";
+
+				$.ajax({
+					url:P_URL,
+					type:"post",
+					dataType:"json",
+					statusCode:{
+						200:function (data) {
+							console.log(data);
+							$("input[name='xueliweight']").val(data.peopleIntension.xueliweight);
+							$("input[name='workexpweight']").val(data.peopleIntension.workexpweight);
+							var xueli=$("input[name='xueliscore']");
+//							console.log(xueli);
+							var xlist=data.xlist;
+							for(var i=0;i<xlist.length;i++){
+								$(xueli[i]).val(xlist[i].xueliscore)
+							}
+							var workexp=$("input[name='workexpscore']");
+							var wlist=data.wlist;
+							for(var i=0;i<wlist.length;i++){
+								$(workexp[i]).val(wlist[i].placescore);
+							}
+						},
+						400:function (data) {
+							alert("400");
+						}
+					}
+				})
+
+		})
+	</script>
+
+</html>

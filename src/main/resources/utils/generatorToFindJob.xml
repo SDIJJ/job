@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动包位置 -->
+
+
+
+
+
+    <!-- 生成注释配置 -->
+    <!--<commentGenerator type="cc.bandaotixi.plugins.BDTCommentGenerator">-->
+        <!--<property name="javaFileEncoding" value="GB2312"/>-->
+        <!--<property name="suppressDate" value="true"/>-->
+        <!--<property name="suppressAllComments" value="true" />-->
+    <!--</commentGenerator>-->
+
+
+
+
+
+    <!-- <classPathEntry location="D:\software\lib\mysql-connector-java-5.1.21.jar" /> -->
+    <classPathEntry location="C:\mybatisgen\mysql-connector-java-5.1.6.jar"/>
+    <context id="mysqltools" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库链接URL、用户名、密码 -->
+        <!-- <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/sy" userId="sypro" password="sypro"> -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost/job?useUnicode=true&amp;characterEncoding=utf-8"
+                        userId="root" password="root" >
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置 -->
+        <javaModelGenerator targetPackage="com.lyf.model" targetProject="C:\mybatisgen">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成的映射文件包名和位置 -->
+        <sqlMapGenerator targetPackage="com.lyf.mapping" targetProject="C:\mybatisgen">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置 XMLMAPPER-->
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.lyf.mapper"
+                             targetProject="C:\mybatisgen">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- 要生成那些表(更改tableName和domainObjectName就可以)
+            更复杂的方式如下： 但基本不常用
+            <table tableName="tmenu" domainObjectName="Menu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+
+        -->
+        <!--<table tableName="user" domainObjectName="User"/>-->
+        <!--<table tableName="company" domainObjectName="Company"/>-->
+        <!--<table tableName="jobintension" domainObjectName="Jobintension"/>-->
+        <!--<table tableName="peopleintension" domainObjectName="Peopleintension"/>-->
+        <!--<table tableName="placejobintension" domainObjectName="Placejobintension"/>-->
+        <!--<table tableName="resume" domainObjectName="Resume"/>-->
+        <!--<table tableName="typejobintension" domainObjectName="Typejobintension"/>-->
+        <!--<table tableName="workexppeopleintension" domainObjectName="Workexppeopleintension"/>-->
+        <!--<table tableName="xuelipeopleintension" domainObjectName="Xuelipeopleintension"/>-->
+        <table tableName="company_resume" domainObjectName="CompanyResume"/>
+        <!--<table tableName="company" domainObjectName="Company"/>-->
+        <!--<table tableName="seeker" domainObjectName="Seeker"/>-->
+        <!--<table tableName="user" domainObjectName="User"/>-->
+
+
+    </context>
+</generatorConfiguration>

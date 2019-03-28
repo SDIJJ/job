@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>登录</title>
+
+
+        <!-- CSS -->
+        <script type="application/javascript" src="layui/layui.all.js"></script>
+        <link rel="stylesheet" href="layui/css/layui.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="icon" href="img/TIM7.png"
+        type="image/png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    </head>
+
+    <body>
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>智能</strong>招聘</h1>
+                            <div class="description">
+                            	<p>
+                                        将您的企业需求告诉我们，我们帮您挑选出<a href="#"><strong>最合适</strong></a>的人才!
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>登录<a style="font-size: 16px; margin-left:5%; color: #1E9FFF;" href="register.html">没有账号?立即注册</a></h3>
+                            		<p>请输入您的账号和密码</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-key"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form id="loginform" class="login-form">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="username">Username</label>
+			                        	<input type="text" name="username" id="username" placeholder="账号..." class="form-username form-control" id="username">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="password">Password</label>
+			                        	<input type="password" name="password" id="password" placeholder="密码..." class="form-password form-control" id="password">
+			                        </div>
+			                        <!--<button id="loginbtn"  style="background-color: #1E9FFF;">登录!</button>-->
+                                    <input type="button" value="登录！" style="background-color: #1E9FFF; text-align: center" id="loginbtn" class="layui-btn layui-btn-lg" />
+
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        <script type="text/javascript" src="js/login.js"></script>
+        <script src="js/tojson.js"></script>
+        <script src="js/jquery.cookie-1.4.1.min.js"></script>
+        <script type="application/javascript">
+            $(function () {
+                var LOGIN_URL = "http://localhost:8082/user/login";
+                $("#loginbtn").click(function () {
+                    var json = JSON.stringify($("#loginform").serializeObject());
+                    console.log("json=" + json);
+                    $.ajax({
+                        url: LOGIN_URL,
+                        data: json,
+                        type: "post",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        statusCode: {
+                            200: function (data) {
+                                alert(data.username + "登陆成功");
+                                console.log(data.username);
+                                window.location = "index.html?username=" + data.username;
+                            },
+                            409: function (data) {
+                                alert("登陆错误！");
+                            }
+                        }
+                    })
+                })
+            })
+        </script>
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>

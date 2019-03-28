@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/home.css">
+		<style type="text/css">
+			body {
+				font-size: 15px;
+				font-family: "microsoft yahei";
+			}
+			
+			.aui-content-up {
+				height: 100%;
+			}
+			
+			input{
+				width: 35px;
+				height: auto;
+				border: 1px solid #b3cef9;
+    			border-radius: 4px
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="aui-content-up">
+			<form id="jobIntensionForm" action="http://localhost:8082/jobFind/updateJobFind" method="post">
+					<div class="aui-content-up-form">
+					<h2>意向企业类型</h2>
+				</div>
+					<p>&nbsp;</p>
+					<p>请为每一项打出你的满意程度（0-10）</p>
+				<div style="float: right;display: inline-block">打出你的重视度（0-10）</div>
+				<br/>
+				<div style="float: right;display: inline-block">
+					<input type="text" name="typeweight"/></div>
+				<div style="align-self: auto; display: inline-block">
+					<input type="hidden" name="type" value="有限责任公司" /><input type="text" name="typescore" value="5">有限责任公司<br>
+					<input type="hidden" name="type" value="个人独资公司" /><input type="text" name="typescore" value="5">个人独资公司<br>
+					<input type="hidden" name="type" value="合伙企业" /><input type="text" name="typescore" value="5">合伙企业<br>
+					<input type="hidden" name="type" value="全民所有制企业" /><input type="text" name="typescore" value="5">全民所有制企业<br/>
+					<input type="hidden" name="type" value="集体所有制企业" /><input type="text" name="typescore" value="5">集体所有制企业<br/>
+				</div> <br/>
+
+				<p>&nbsp;</p>
+					<div class="aui-content-up-form">
+					<h2>意向工作地点</h2>
+				</div>
+					<p>&nbsp;</p>
+					<div style="float: right;display: inline-block">打出你的重视度（0-10）</div>
+					<br />
+					<div style="float: right;display: inline-block">
+						<input type="text" name="placeweight"/></div>
+				<div style="	align-self: auto;  display: inline-block">
+					<input type="hidden" name="place" value="北京" /><input type="text" name="placescore" value="5">北京<br>
+					<input type="hidden" name="place" value="上海" /><input type="text" name="placescore" value="5">上海<br>
+					<input type="hidden" name="place" value="广州" /><input type="text" name="placescore" value="5">广州<br>
+					<input type="hidden" name="place" value="深圳" /><input type="text" name="placescore" value="5">深圳<br/>
+					<input type="hidden" name="place" value="其他" /><input type="text" name="placescore" value="5">其他<br/>
+				</div>
+				<p> </p>
+				<button class="aui-btn aui-btn-account"   style="float: right" id="jobIntensionbtn">保存并提交</button>
+			</form>
+		</div>
+	</body>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/tojson.js"></script>
+	<script  src="js/jquery.cookie-1.4.1.min.js"></script>
+	<script>
+		$(function () {
+			$("#jobIntensionbtn").on('click',function () {
+				$("#jobIntensionForm").submit();
+			})
+
+			var J_URL="http://localhost:8082/jobFind/getJobIntension";
+			$.ajax({
+				url:J_URL,
+				type:"post",
+				dataType:"json",
+				statusCode:{
+					200:function (data) {
+						console.log(data);
+						$("input[name='typeweight']").val(data.jobIntension.typeweight);
+						$("input[name='placeweight']").val(data.jobIntension.placeweight);
+						var type=$("input[name='typescore']");
+						var tlist=data.tlist;
+						for(var i=0;i<tlist.length;i++){
+							$(type[i]).val(tlist[i].typescore)
+						}
+						var place=$("input[name='placescore']");
+						var plist=data.plist;
+						for(var i=0;i<plist.length;i++){
+							$(place[i]).val(plist[i].placescore);
+						}
+					},
+					409:function (data) {
+						alert("请完善求职意向！");
+					}
+				}
+			})
+//				var json=JSON.stringify($('#jobIntensionForm').serializeObject());
+//				console.log(json);
+//				var JOBINTEN_URL="http://localhost:8082/jobFind/findCompany";
+//				$.ajax({
+//					url:JOBINTEN_URL,
+//					data:json,
+//					type:"post",
+//					contentType:'application/json;charset=utf-8',//关键是要加上这行
+////					traditional:true,//这使json格式的字符不会被转码
+//				    dataType:"json",
+//					stateCode:{
+//						200:function (data) {
+//							console.log(data);
+//							alert("ok!");
+////							window.location="companys.html?data="+data
+////							console.log(data);
+//
+//						}
+//
+//					}
+//				})
+
+		})
+	</script>
+</html>
